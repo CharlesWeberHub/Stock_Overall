@@ -1,0 +1,13 @@
+
+
+
+#0700.HKG
+#https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=0700.HKG&interval=5min&apikey=M8F682V4565LELXQ&datatype=csv
+
+
+#https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=0700.HKG&interval=1min&outputsize=full&apikey=M8F682V4565LELXQ&datatype=csv
+
+#https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=xiaomi&apikey=M8F682V4565LELXQ
+
+#https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=0005.HKG&interval=1min&outputsize=full&apikey=M8F682V4565LELXQ&datatype=csv
+#https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=0011.HKG&interval=1min&outputsize=full&apikey=M8F682V4565LELXQ&datatype=csv
