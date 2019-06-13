@@ -9,7 +9,9 @@ from hmmlearn.hmm import GaussianHMM
 import Strategy_Engine
 import Translator
 
-file = open('intraday_1min_0700.HKG.csv', 'r')
+
+file_name='intraday_1min_0700.HKG.csv'
+file = open(file_name, 'r')
 DATA_LENGTH=500
 
 
@@ -21,7 +23,8 @@ low = list()
 close = []
 volume = list()
 sign_list=[0,0,0,0]  #初始的四个数据点不会产生购买信号
-
+STATE=[0,1,2] #0是保持不变，1是买进，2是卖出
+color_list=['w','r','g']
 
 weight_list=[0.05,0.15,0.1,0.2,0.5]
 
@@ -84,15 +87,37 @@ act_sign_list=Translator.position_state_translate(sign_list)
 #将操作信号变换指示颜色
 indicate_list=Translator.color_translate(act_sign_list)
 
-ax.scatter(timestamp,close,c = indicate_list,marker = 'o')
+
+#将信号切成买入卖出组
+buy_x=list()
+buy_y=list()
+
+sell_x=list()
+sell_y=list()
+
+for index in range(len(indicate_list)):
+    if indicate_list[index]==color_list[1]:
+       buy_x.append(timestamp[index])
+       buy_y.append(close[index])
+
+    if indicate_list[index]==color_list[2]:
+       sell_x.append(timestamp[index])
+       sell_y.append(close[index])
+
+print(str(buy_x))
+print(str(buy_y))
+
+
+ax.scatter(buy_x,buy_y,color='r',marker = 'o',label='Buy Point')
+ax.scatter(sell_x,sell_y,color='g',marker = 'x',label='Sell Point')
 
 #print('state_list_len:'+str(state_list))
 
 #画操作信号散点图
 
 
-
-plt.title('HSBC 0005.hk  '+str(DATA_LENGTH)+ 'minutes data')
+plt.legend(loc='upper left')
+plt.title(file_name+ '   '+str(DATA_LENGTH)+ 'minutes data')
 plt.show()
 
 

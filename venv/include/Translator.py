@@ -26,7 +26,6 @@ def position_state_translate(sign_list):
              if sign_list[index]==STATE[2]:
                  position_state=0
 
-    print(str(act_sign_list))
     return act_sign_list
 
 
@@ -44,5 +43,6 @@ def color_translate(sign_list):
             indicate_list.append(color_list[2])
 
     return indicate_list
+
 
 
